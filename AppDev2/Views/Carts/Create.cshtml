@@ -1,0 +1,23 @@
+﻿@model AppDev2.ViewModels.CartViewModel
+@{
+	ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<h2>Add a Product to Cart</h2>
+
+@using (Html.BeginForm("Create", "Carts", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.AntiForgeryToken()
+    @Html.LabelFor(c => c.Product.Name)    
+    @Html.DropDownListFor(c => c.Product.Id
+      ,new SelectList(Model.Products, "Id", "Name"),
+      "Select Product",
+      new {@class="form-control"}
+    )
+  </div>
+
+<button type="submit" class="btn btn-primary">Add to Cart</button>
+}

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<AppDev2.Models.Cart>
+@{
+	ViewBag.Title = "Mine";
+}
+
+<h2>Mine</h2>
+
+@Html.ActionLink("Create a new Cart", "Create")
+
+<table class="table table-striped">
+	<tr>
+		<th>Cart Id</th>
+		<th>Product Name</th>
+		<th>Delete</th>
+		<th>Edit</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+<tr>
+	<th>@item.Id</th>
+	<th>@item.Product.Name</th>
+	<th>@Html.ActionLink("Delete this product", "Delete", new { id = item.Id })</th>
+	<th>@Html.ActionLink("Edit this product", "Edit", new { id = item.Id })</th>
+</tr>
+	}
+</table>
